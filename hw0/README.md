@@ -37,15 +37,17 @@ ls
 
 You are recommended to create a hw repository on your own account for working, and use the one we assign you for your final submission.
 
-Say you've just finished coding wc.c in the first part of your assignment. You should *commit*, this saves the changes you've made on your local files.  
-First you have to *add* the files you want to commit, you can see what files are changed displayed in red by executing: ```git status```  
-You can also see what changes have been made since your last commit: ```git diff```  
-To add files to your next commit do ```git add wc.c```, you can also add all changed files by doing ```git add .```  
-Once you've done this, *status* should show these files in green. Now you have to commit those files: ```git commit -m "Finished coding wc.c."```. The -m flag specifies a commit message as a parameter, you don't have to use the flag but you should always indicate what you've done as the message.  
-You can view your commit history by running ```git log```.
-But the files still saved only on the local computer, to update the remote repository, you need to *push* the repository: ```git push <your_repository_url> master```.
+Say you've just finished coding wc.c in the first part of your assignment and want to save your changes. 
+```git status``` see what files are changed and staged for the next commit, those are displayed in red and green respectively 
+```git diff``` see what changes have been made since your last commit  
+```git add wc.c``` stage wc.c to your next commit   
+```git add .``` stage all changed files in the current directory for your next commit  
+ ```git commit -m "Finished coding wc.c"``` creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
+ 
+But the files are still saved only on the local computer, to update the remote repository, you need to *push*:  
+```git push <your_repository_url> master```
 Having done that once, you can continue doing your work next time by cloning the hw repository from your GitHub account on another computer.
-If you just type ```git push```, it will try to push to origin. Unless you changed origin to point to your personal GitHub url as specified in hw/README.md, this will fail.
+If you just type ```git push```, it will try to push to 'origin'. Unless you changed 'origin' to point to your personal GitHub url as specified in hw/README.md, this will fail.
 
 ## 3 Your assignment
 
