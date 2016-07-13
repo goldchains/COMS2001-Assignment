@@ -85,9 +85,9 @@ this repository private and secure.  You will be using this repository
 to submit your assignments.
 
 Each assignment will reside in a separate top-level directory. Each
-assignment has a `README` containing instructions as well as the files
-you are going to need to complete the assignment. Right now, you are
-reading a `README` for hw0.
+assignment has a `README.md` containing instructions as well as the
+files you are going to need to complete the assignment. Right now, you
+are reading a `README.md` for hw0.
 
 At the start of the course, your personal repository will be empty,
 except for the `README.md` file at its root.
@@ -115,3 +115,4 @@ are welcome to seek help on this both from your fellow students and
 from the course staff. A brief presentation on using `git` and GitHub
 will be given at the first lab.
 
+## Good luck with all your assignments! ##
