@@ -37,12 +37,12 @@ ls
 
 You are recommended to create a hw repository on your own account for working, and use the one we assign you for your final submission.
 
-Say you've just finished coding wc.c in the first part of your assignment and want to save your changes. 
-```git status``` see what files are changed and staged for the next commit, those are displayed in red and green respectively 
-```git diff``` see what changes have been made since your last commit  
-```git add wc.c``` stage wc.c to your next commit   
-```git add .``` stage all changed files in the current directory for your next commit  
- ```git commit -m "Finished coding wc.c"``` creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
+Say you've just finished coding wc.c in the first part of your assignment and want to save your changes.  
+```git status``` - see what files are changed and staged for the next commit, those are displayed in red and green respectively  
+```git diff``` - see what changes have been made since your last commit  
+```git add wc.c``` - stage wc.c to your next commit  
+```git add .``` - stage all changed files in the current directory for your next commit  
+ ```git commit -m "Finished coding wc.c"``` - creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
  
 But the files are still saved only on the local computer, to update the remote repository, you need to *push*:  
 ```git push <your_repository_url> master```
@@ -66,8 +66,8 @@ While you are working on this, take the time to get some experience with gdb. Us
 Since this is your first assignment, we'll help introduce you to some parts of C that you may not have experienced hitherto.
 
 You will notice that main takes in two parameters: *argc* and *argv*.  
-*argv*: the array of parameters passed to the program. For example you may call *wc* as follows: ```wc file.txt```. *argv* is then ["wc","file.txt"].  
-*argc*: the number of parameters passed to the program and will always be at least 1, since the program name is always the first parameter.
+* *argv*: the array of parameters passed to the program. For example you may call *wc* as follows: ```wc file.txt```. *argv* is then ["wc","file.txt"].  
+* *argc*: the number of parameters passed to the program and will always be at least 1, since the program name is always the first parameter.
 
 Another thing to note in C is that you do not use streams in the C++ sense. Printing output in C may be done as follows:
 ```
@@ -75,8 +75,7 @@ int val2 = 2001;
 char word[] = "student"
 printf("I am a %s doing COMS%d",word,val2);
 ```  
-The format options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html  
-You should consult those for techniques such as file handling.
+The formatting options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html that you should consult for techniques such as file handling.
 
 ### 3.3 Executables and addresses
 Now that you have dusted off your C skills and got familiarity with some of the tools, we want you to understand what is really inside of a running program and what the operating system needs to deal with. Load up your wc executable in gdb with a single input file command line argument, set a breakpoint at wc, and run to there. Take a look at the stack using where or backtrace (bt). While you are looking through gdb, think about the following questions and put your answers in the file gdb.txt. • What is the value of infile? (hint: print infile)
@@ -106,17 +105,19 @@ executing program?
 * Do you see the stack segment anywhere? What about the heap? Explain.
 
 OK, now you are ready to write a program that reveals its own executing structure. The second file in hw0, map.c provides a rather complete skeleton. You will need to modify it to get the addresses that you are looking for and get the type casts right so that it compiles without warning. The output of the solution looks like the following (the addresses will be different).
->precise64 hw0 ./map  
->Main @ 40058c  
->recur @ 400544  
->Main stack: 7fffda11f73c  
->static data: 601028  
->Heap: malloc 1: 671010  
->Heap: malloc 2: 671080  
->recur call 3: stack@ 7fffda11f6fc  
->recur call 2: stack@ 7fffda11f6cc  
->recur call 1: stack@ 7fffda11f69c  
->recur call 0: stack@ 7fffda11f66c  
+```
+$./map  
+Main @ 40058c  
+recur @ 400544  
+Main stack: 7fffda11f73c  
+static data: 601028  
+Heap: malloc 1: 671010  
+Heap: malloc 2: 671080  
+recur call 3: stack@ 7fffda11f6fc  
+recur call 2: stack@ 7fffda11f6cc  
+recur call 1: stack@ 7fffda11f69c  
+recur call 0: stack@ 7fffda11f66c  
+```
 
 Now think about the following questions and put the answers in map.txt.
 * Using objdump on the map executable. Which of the addresses from the previous section are defined in the executable, and which segment is each defined in?
