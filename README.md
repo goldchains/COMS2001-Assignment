@@ -8,9 +8,8 @@ following steps:
 1. If you don't have a GitHub account, create one.
 
 2. Register your GitHub username with this course by filling out [this
-form](http://goo.gl/GB61cF).  This is due on Friday, 15
-July -- **you will not be able to submit any assignments,
-including this one, if this is not done**.
+form](http://goo.gl/GB61cF).  This is due on Friday, 15 July -- **you
+will not be able to submit any assignments if this is not done**.
 
 3. On your local machine, create a repository that you will be using
 for your COMS2001 assignments -- the name of the repository doesn't
