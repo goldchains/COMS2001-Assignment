@@ -6,23 +6,23 @@
 First, we will introduce you to some useful tools that make a good fit in any system programmer’s toolbox. Some of these (git, make) are MANDATORY to understand in that you won’t be able to compile/submit your code without understanding how to use them. Others such as gdb or tmux are productivity boosters; one helps you find bugs and the other helps you multitask more effectively. All of these are installed on the lab machines.  
 We do not go into much depth on how to use any of these tools in this document. Instead, we refer to resources where you can read about them. (Links to these and additional resources can be found at the <a href="http://www.cs.wits.ac.za/ dmitry/coms2001/resources.html">course webpage</a>). We highly encourage this reading even though not all of it is necessary for this assignment. You will enjoy this course much more if you take time to master these tools, and they will serve you well in your future career.
 
-#### 1.1 git
+### 1.1 git
 **git** is a version control tool that helps keep track of your code. GitHub is a service that provides a place to host your code. You can use git on your own computer, without GitHub. Pushing your code to GitHub, however, lets you easily share it and collaborate with others.  
 At this point, you have already tried out some of git commands, but to make full use of it, you need a much deeper understanding. Also, if you are serious about writing software, understanding the inner workings of git will be a huge benefit. If you have never used git or want a fresh start, we recommend
 you start <a href="http://git-scm.com/book/en/Getting-Started">here</a>. If you sort of understand git, this <a href="http://goo.gl/cLBs3D">presentation</a> and this <a href="http://think-like-a-git.net/">website</a> will be useful in understanding the inner workings a bit more.
 
-#### 1.2 make
+### 1.2 make
 **make** is a utility that automatically builds executable programs and libraries from source code by reading files called makefiles, which specify how to derive the target program. In a makefile, you list dependencies among your files, and make traverses the dependency graph to build everything. Unfortunately, make has very awkward syntax that is, at times, very confusing if you are not properly equipped to understand
 what is actually going on.  
 A few good tutorials are <a href="ttp://wiki.wlug.org.nz/MakefileHowto">here</a> and <a href="http://mrbook.org/blog/?s=make">here</a>.
 
-#### 1.3 gdb
+### 1.3 gdb
 Debugging C programs is difficult. Crashes don’t give you nice exception messages or stack traces by default. Fortunately, there’s gdb. If you compile your programs with a special flag **-ggdb3**, then the output executable will have debug symbols, which allow gdb to do its magic. If your run your C program inside gdb it will allow you to not only look get a stack trace, but inspect variables, change variables, pause code, among other things.  
 Normal gdb has a very plain interface, so you might prefer to use **cgdb**, which has syntax highlighting and few other features.  
 <a href="http://rsquared.sdf.org/gdb/">This</a> is an excellent read on understanding not only how to use gdb, but also how your programs work. The material discussed in this tutorial links up with concepts we are going to be discussing from the very beginning of this course, so reading it will significantly enhance your understanding of the course material.  
 At this point, take a moment to begin working on your wc program for this assignment. Provide the **-ggdb3** flag when you compile your program with gcc. Start the program under gdb. Set a break point at the beginning of main. Run to there. Try out various commands. Figure out how to pass command line arguments. Add local variables and try probing their values. Learn about step, next, and break.
 
-#### 1.4 Text-Editors
+### 1.4 Text-Editors
 There are two very powerful terminal-based text editors: **emacs** and **vim**. Learning to use one of these takes time but will dramatically boost your productivity in the long run. We encourage you to use one of these for the duration of the course, or at least a simple alternative with syntax highlighting, such as **Notepad++**. Learning to code independent of an IDE is very important. <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">Here</a> is a good tutorial to get started with **emacs**.
 
 ## 2 git
@@ -44,6 +44,7 @@ To add files to your next commit do ```git add wc.c```, you can also add all cha
 Once you've done this, *status* should show these files in green. Now you have to commit those files: ```git commit -m "Finished coding wc.c."```. The -m flag specifies a commit message as a parameter, you don't have to use the flag but you should always indicate what you've done as the message.  
 You can view your commit history by running ```git log```.
 But the files still saved only on the local computer, to update the remote repository, you need to *push* the repository: ```git push <your_repository_url> master```.
+Having done that once, you can continue doing your work next time by cloning the hw repository from your GitHub account on another computer.
 If you just type ```git push```, it will try to push to origin. Unless you changed origin to point to your personal GitHub url as specified in hw/README.md, this will fail.
 
 ## 3 Your assignment
@@ -75,7 +76,7 @@ printf("I am a %s doing COMS%d",word,val2);
 The format options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html  
 You should consult those for techniques such as file handling.
 
-#### 3.3 Executables and addresses
+### 3.3 Executables and addresses
 Now that you have dusted off your C skills and got familiarity with some of the tools, we want you to understand what is really inside of a running program and what the operating system needs to deal with. Load up your wc executable in gdb with a single input file command line argument, set a breakpoint at wc, and run to there. Take a look at the stack using where or backtrace (bt). While you are looking through gdb, think about the following questions and put your answers in the file gdb.txt. • What is the value of infile? (hint: print infile)
 * What is the object referenced by infile? (hint: *infile)
 * What is the value of ofile? How is it different from that of infile? Why?
@@ -124,7 +125,7 @@ Now think about the following questions and put the answers in map.txt.
 * Are the two malloc()ed memory areas contiguous?
 * Make a high level map of the address space for the program containing each of the important segments, where they start and end, where the holes are, and what direction things grow in.
 
-#### 2.4 user limits
+### 3.4 user limits
 The size of the dynamically allocated segments, stack and heap, is something the operating system has to deal with. How large should these be? Poke around a bit to find out how to get and set user limits on linux. Modify main.c so that it prints out the maximum stack size, the maximum number of processes,
 and maximum number of file descriptors. Currently, when you compile and run main.c you will see it print out a bunch of system resource limits (stack size, heap size, ..etc). Unfortunately all the values will be 0! Your job is to get this to print the ACTUAL statistics. (Hint: ```man rlimit```)  
 You should expect output similar to this:
@@ -142,11 +143,10 @@ The final command ```echo $?``` returns the error code of the last executed comm
 
 ## 3 Submitting your work
 
-#### 3.1 Submitting your work
 You will be saving all your work on your assigned GitHub account, these will be created some time before the next lab session.
 Once you have finished your work on your local repository, push to your assigned GitHub account, which will be named after your student number. 
 e.g ```git push https://github.com/WITS-COMS2001/100234 master```
 
-Having done that once, you can continue doing your work next time by cloning the hw repository from your GitHub account on another computer.
+
 
 **Good luck with your first assignment!**
