@@ -4,7 +4,7 @@
 ## 1 Tools Overview
 
 First, we will introduce you to some useful tools that make a good fit in any system programmer’s toolbox. Some of these (git, make) are MANDATORY to understand in that you won’t be able to compile/submit your code without understanding how to use them. Others such as gdb or tmux are productivity boosters; one helps you find bugs and the other helps you multitask more effectively. All of these are installed on the lab machines.  
-We do not go into much depth on how to use any of these tools in this document. Instead, we refer to resources where you can read about them. (Links to these and additional resources can be found at the <a href="http://www.cs.wits.ac.za/ dmitry/coms2001/resources.html">course webpage</a>). We highly encourage this reading even though not all of it is necessary for this assignment. You will enjoy this course much more if you take time to master these tools, and they will serve you well in your future career.
+We do not go into much depth on how to use any of these tools in this document. Instead, we refer to resources where you can read about them. (Links to these and additional resources can be found at the <a href="http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html">course webpage</a>). We highly encourage this reading even though not all of it is necessary for this assignment. You will enjoy this course much more if you take time to master these tools, and they will serve you well in your future career.
 
 ### 1.1 git
 **git** is a version control tool that helps keep track of your code. GitHub is a service that provides a place to host your code. You can use git on your own computer, without GitHub. Pushing your code to GitHub, however, lets you easily share it and collaborate with others.  
@@ -14,12 +14,12 @@ you start <a href="http://git-scm.com/book/en/Getting-Started">here</a>. If you 
 ### 1.2 make
 **make** is a utility that automatically builds executable programs and libraries from source code by reading files called makefiles, which specify how to derive the target program. In a makefile, you list dependencies among your files, and make traverses the dependency graph to build everything. Unfortunately, make has very awkward syntax that is, at times, very confusing if you are not properly equipped to understand
 what is actually going on.  
-A few good tutorials are <a href="ttp://wiki.wlug.org.nz/MakefileHowto">here</a> and <a href="http://mrbook.org/blog/?s=make">here</a>.
+A few good tutorials are <a href="http://wiki.wlug.org.nz/MakefileHowto">here</a> and <a href="http://mrbook.org/blog/?s=make">here</a>.
 
 ### 1.3 gdb
 Debugging C programs is difficult. Crashes don’t give you nice exception messages or stack traces by default. Fortunately, there’s gdb. If you compile your programs with a special flag **-ggdb3**, then the output executable will have debug symbols, which allow gdb to do its magic. If your run your C program inside gdb it will allow you to not only look get a stack trace, but inspect variables, change variables, pause code, among other things.  
 Normal gdb has a very plain interface, so you might prefer to use **cgdb**, which has syntax highlighting and few other features.  
-<a href="http://rsquared.sdf.org/gdb/">This</a> is an excellent read on understanding not only how to use gdb, but also how your programs work. The material discussed in this tutorial links up with concepts we are going to be discussing from the very beginning of this course, so reading it will significantly enhance your understanding of the course material.  
+<a href="http://dirac.org/linux/gdb/">This</a> is an excellent read on understanding not only how to use gdb, but also how your programs work. The material discussed in this tutorial links up with concepts we are going to be discussing from the very beginning of this course, so reading it will significantly enhance your understanding of the course material.  
 At this point, take a moment to begin working on your wc program for this assignment. Provide the **-ggdb3** flag when you compile your program with gcc. Start the program under gdb. Set a break point at the beginning of main. Run to there. Try out various commands. Figure out how to pass command line arguments. Add local variables and try probing their values. Learn about step, next, and break.
 
 ### 1.4 Text-Editors
@@ -27,7 +27,7 @@ There are two very powerful terminal-based text editors: **emacs** and **vim**. 
 
 ## 2 git
 
-As stated [before](../README.md), to do this, and all the subsequent assignments, you need to have a GitHub account set up. Therefore, if you have not done so already, go to https://github.com and create an account.  
+As stated [before](../README.md), to do this, and all subsequent assignments, you need to have a GitHub account. Therefore, if you have not done so already, go to https://github.com and create an account.  
 To start working on this assignment, clone the repository hw into your local directory, and change to the directory hw/hw0 to get access to the files for this assignment:
 ```
 git clone https://github.com/WITS-COMS2001/hw.git
@@ -148,7 +148,7 @@ The final command ```echo $?``` returns the error code of the last executed comm
 
 You will be saving all your work on your assigned GitHub account, these will be created some time before the next lab session.
 Once you have finished your work on your local repository, push to your assigned GitHub account, which will be named after your student number. 
-e.g ```git push https://github.com/WITS-COMS2001/100234 master```
+e.g. ```git push https://github.com/WITS-COMS2001/100234 master```
 
 
 
