@@ -68,7 +68,7 @@ After reading the link, you need to do something similar for all three programs 
 
 ### 3.2 wc
 We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth.  
-Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality for processing files in wc.c (you should handle multiple files as input, don’t worry about the flags or spacing in the output). 
+Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality in wc.c for processing user input and files. It must be able to handle multiple input files. Don’t worry about the flags or spacing in the output. 
 You should also familiarise yourself with the *man* command, which allows you to access manual pages for Linux terminal functions. e.g. ```man wc```  
 While you are working on this, take the time to get some experience with gdb. Use it to step through your code and examine variables. If you have never used gdb before, consult the following tutorial: http://dirac.org/linux/gdb/
 
