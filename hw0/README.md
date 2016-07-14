@@ -23,7 +23,7 @@ Normal gdb has a very plain interface, so you might prefer to use **cgdb**, whic
 At this point, take a moment to begin working on your wc program for this assignment. Provide the **-ggdb3** flag when you compile your program with gcc. Start the program under gdb. Set a break point at the beginning of main. Run to there. Try out various commands. Figure out how to pass command line arguments. Add local variables and try probing their values. Learn about step, next, and break.
 
 ### 1.4 Text-Editors
-There are two very powerful terminal-based text editors: **emacs** and **vim**. Learning to use one of these takes time but will dramatically boost your productivity in the long run. We encourage you to use one of these for the duration of the course, or at least a simple alternative with syntax highlighting, such as **Notepad++**. Learning to code independent of an IDE is very important. <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">Here</a> is a good tutorial to get started with **emacs**.
+There are two very powerful terminal-based text editors: **emacs** and **vim**. Learning to use one of these takes time but will dramatically boost your productivity in the long run. We encourage you to use one of these for the duration of the course, or at least a simple alternative with syntax highlighting, such as **gedit** or **Notepad++**. Learning to code independent of an IDE is very important. <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">Here</a> is a good tutorial to get started with **emacs**.
 
 ## 2 git
 
@@ -55,18 +55,27 @@ For this homework, you will be brushing up on your C skills and exploring how a 
 Part of this course is that you are able solve problems independently. We have linked some resources and you are encouraged to read the material and search the internet for any specific problems you encounter; Googling is a skill. Nevertheless, your tutors are available should you get stuck.
 
 ### 3.1 make
-You have probably been using **gcc** to compile your C++ programs from the command line in first year, but this grows tedious and complicated as the number of files you need to compile increases. You will need to write a Makefile that compiles main.c, wc.c, and map.c. You will also need to write a target clean (to be invoked by make clean) to remove your binaries. If all of this is new to you, make sure to consult the following tutorial: http://mrbook.org/blog/?s=make
+You have probably been using *gcc* to compile your C++ programs from the command line in first year, but this grows tedious and complicated as the number of files you need to compile increases. You will need to write a Makefile that compiles main.c, wc.c, and map.c. You will also need to write a target clean (to be invoked by make clean) to remove your binaries. If all of this is new to you, make sure to consult the following tutorial: http://mrbook.org/blog/?s=make
+
+As a trivial example say you have a simple C program, hello_world.c, your makefile would look something like this:  
+```make
+all: hello_world
+
+hello_world: hello_world.c
+	gcc hello_world.c -o hello_world
+```  
+After reading the link, you need to do something similar for all three programs in the assignment.
 
 ### 3.2 wc
 We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth.  
-Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality in wc.c (don’t worry about the flags or spacing in the output). 
+Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality for processing files in wc.c (you should handle multiple files as input, don’t worry about the flags or spacing in the output). 
 You should also familiarise yourself with the *man* command, which allows you to access manual pages for Linux terminal functions. e.g. ```man wc```  
 While you are working on this, take the time to get some experience with gdb. Use it to step through your code and examine variables. If you have never used gdb before, consult the following tutorial: http://dirac.org/linux/gdb/
 
 Since this is your first assignment, we'll help introduce you to some parts of C that you may not have experienced hitherto.
 
 You will notice that main takes in two parameters: *argc* and *argv*.  
-* *argv*: the array of parameters passed to the program. For example you may call *wc* as follows: ```wc file.txt```. *argv* is then ["wc","file.txt"].  
+* *argv*: the array of parameters passed to the program. For example you may call *wc* as follows: ```wc file1.txt file2.txt```. *argv* is then ["wc","file1.txt","file2.txt"].  
 * *argc*: the number of parameters passed to the program and will always be at least 1, since the program name is always the first parameter.
 
 Another thing to note in C is that you do not use streams in the C++ sense. Printing output in C may be done as follows:
