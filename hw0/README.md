@@ -27,8 +27,8 @@ There are two very powerful terminal-based text editors: **emacs** and **vim**. 
 
 ## 2 git
 
-As stated [before](../README.md), to do this, and all subsequent assignments, you need to have a GitHub account. Therefore, if you have not done so already, go to https://github.com and create an account.  
-To start working on this assignment, clone the repository hw into your local directory, and change to the directory hw/hw0 to get access to the files for this assignment:
+As stated [before](../README.md), to do this and all subsequent assignments, you need to have a GitHub account. Therefore, if you have not done so already, go to https://github.com and create an account.  
+To start working on this assignment, open a terminal, clone the repository hw into your local directory, and change to the directory hw/hw0 to get access to the files for this assignment:
 ```
 git clone https://github.com/WITS-COMS2001/hw.git
 cd hw/hw0
@@ -45,9 +45,9 @@ Say you've just finished coding wc.c in the first part of your assignment and wa
  ```git commit -m "Finished coding wc.c"``` - creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
  
 But the files are still saved only on the local computer, to update the remote repository, you need to *push*:  
-```git push <your_repository_url> master```
+```git push <your_repository_url> master```  
 Having done that once, you can continue doing your work next time by cloning the hw repository from your GitHub account on another computer.
-If you just type ```git push```, it will try to push to 'origin'. Unless you changed 'origin' to point to your personal GitHub url as specified in hw/README.md, this will fail.
+If you just type ```git push```, it will try to push to 'origin'. Unless you changed 'origin' to point to your personal GitHub url as specified in [hw/README.md]((../README.md)), this will fail.
 
 ## 3 Your assignment
 
@@ -64,7 +64,7 @@ all: hello_world
 hello_world: hello_world.c
 	gcc hello_world.c -o hello_world
 ```  
-After reading the link, you need to do something similar for all three programs in the assignment.
+After reading the link, you need to do something similar for all three programs in the assignment. Note that the indentation must be an actual tab character, NOT spaces.
 
 ### 3.2 wc
 We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth.  
@@ -81,8 +81,8 @@ You will notice that main takes in two parameters: *argc* and *argv*.
 Another thing to note in C is that you do not use streams in the C++ sense. Printing output in C may be done as follows:
 ```
 int val2 = 2001;
-char word[] = "student"
-printf("I am a %s doing COMS%d",word,val2);
+char word[] = "student";
+printf("I am a %s doing COMS%d\n",word,val2);
 ```  
 The formatting options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html that you should consult for techniques such as file handling.
 
@@ -102,15 +102,12 @@ executable than meets the eye. Let’s look down inside.
 
 ```objdump -x wc```
 
-You will see that it has several segments, names of functions and variables in your program correspond to labels with addresses or values, and the guts of everything is chunks of stuff within segments. While you are looking through the objdump, try and think about the following questions and put
-the answers in the file objdump.txt.  
+You will see that it has several segments, names of functions and variables in your program correspond to labels with addresses or values, and the guts of everything is chunks of stuff within segments. While you are looking through the objdump, try and think about the following questions and put the answers in the file objdump.txt.  
 * What file format is used for this binary? What architecture is it compiled for?
 * What are the names of segments you find?
-* What segment contains wc (the function) and what is its address? (hint: ```objdump -w wc | grep
-wc```)
+* What segment contains wc (the function) and what is its address? (hint: ```objdump -w wc | grep wc```)
 * What about main?
-* How do these correspond to what you observed in gdb when you were looking at the loaded,
-executing program?
+* How do these correspond to what you observed in gdb when you were looking at the loaded, executing program?
 * Do you see the stack segment anywhere? What about the heap? Explain.
 
 OK, now you are ready to write a program that reveals its own executing structure. The second file in hw0, map.c provides a rather complete skeleton. You will need to modify it to get the addresses that you are looking for and get the type casts right so that it compiles without warning. The output of the solution looks like the following (the addresses will be different).
@@ -153,7 +150,7 @@ $echo $?
 
 The final command ```echo $?``` returns the error code of the last executed command; 0 = success, anything else usually means something went wrong.
 
-## 3 Submitting your work
+## 4 Submitting your work
 
 You will be saving all your work on your assigned GitHub account, these will be created some time before the next lab session.
 Once you have finished your work on your local repository, push to your assigned GitHub account, which will be named after your student number. 

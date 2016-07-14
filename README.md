@@ -86,10 +86,9 @@ to submit your assignments.
 Each assignment will reside in a separate top-level directory. Each
 assignment has a `README.md` containing instructions as well as the
 files you are going to need to complete the assignment. Right now, you
-are reading a `README.md` for hw0.
+are reading a `README.md` for hw.
 
-At the start of the course, your personal repository will be empty,
-except for the `README.md` file at its root.
+At the start of the course, your personal repository will be empty.
 
 ## Suggested workflow
 
