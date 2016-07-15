@@ -54,19 +54,7 @@ If you just type ```git push```, it will try to push to 'origin'. Unless you cha
 For this homework, you will be brushing up on your C skills and exploring how a compiled executable is structured.  
 Part of this course is that you are able solve problems independently. We have linked some resources and you are encouraged to read the material and search the internet for any specific problems you encounter; Googling is a skill. Nevertheless, your tutors are available should you get stuck.
 
-### 3.1 make
-You have probably been using *gcc* to compile your C++ programs from the command line in first year, but this grows tedious and complicated as the number of files you need to compile increases. You will need to write a Makefile that compiles main.c, wc.c, and map.c. You will also need to write a target clean (to be invoked by make clean) to remove your binaries. If all of this is new to you, make sure to consult the following tutorial: http://mrbook.org/blog/?s=make
-
-As a trivial example say you have a simple C program, hello_world.c, your makefile would look something like this:  
-```make
-all: hello_world
-
-hello_world: hello_world.c
-	gcc hello_world.c -o hello_world
-```  
-After reading the link, you need to do something similar for all three programs in the assignment. Note that the indentation must be an actual tab character, NOT spaces.
-
-### 3.2 wc
+### 3.1 wc
 We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth.  
 Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality in wc.c for processing user input and files. It must be able to handle multiple input files. Don’t worry about the flags or spacing in the output. 
 You should also familiarise yourself with the *man* command, which allows you to access manual pages for Linux terminal functions. e.g. ```man wc```  
@@ -86,7 +74,7 @@ printf("I am a %s doing COMS%d\n",word,val2);
 ```  
 The formatting options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html that you should consult for techniques such as file handling.
 
-### 3.3 Executables and addresses
+### 3.2 Executables and addresses
 Now that you have dusted off your C skills and got familiarity with some of the tools, we want you to understand what is really inside of a running program and what the operating system needs to deal with. Load up your wc executable in gdb with a single input file command line argument, set a breakpoint at wc, and run to there. Take a look at the stack using where or backtrace (bt). While you are looking through gdb, think about the following questions and put your answers in the file gdb.txt. • What is the value of infile? (hint: print infile)
 * What is the object referenced by infile? (hint: *infile)
 * What is the value of ofile? How is it different from that of infile? Why?
@@ -134,7 +122,7 @@ Now think about the following questions and put the answers in map.txt.
 * Are the two malloc()ed memory areas contiguous?
 * Make a high level map of the address space for the program containing each of the important segments, where they start and end, where the holes are, and what direction things grow in.
 
-### 3.4 user limits
+### 3.3 user limits
 The size of the dynamically allocated segments, stack and heap, is something the operating system has to deal with. How large should these be? Poke around a bit to find out how to get and set user limits on linux. Modify main.c so that it prints out the maximum stack size, the maximum number of processes,
 and maximum number of file descriptors. Currently, when you compile and run main.c you will see it print out a bunch of system resource limits (stack size, heap size, ..etc). Unfortunately all the values will be 0! Your job is to get this to print the ACTUAL statistics. (Hint: ```man rlimit```)  
 You should expect output similar to this:
@@ -147,6 +135,19 @@ max file descriptors: 1024
 $echo $?
 0
 ```
+
+### 3.4 make
+You have probably been using *gcc* to compile your C++ programs from the command line in first year, but this grows tedious and complicated as the number of files you need to compile increases. You will need to write a Makefile that compiles main.c, wc.c, and map.c. You will also need to write a target clean (to be invoked by make clean) to remove your binaries. If all of this is new to you, make sure to consult the following tutorial: http://mrbook.org/blog/?s=make
+
+As a trivial example say you have a simple C program, hello_world.c, your makefile would look something like this:  
+```make
+all: hello_world
+
+hello_world: hello_world.c
+	gcc hello_world.c -o hello_world
+```  
+After reading the link, you need to do something similar for all three programs in the assignment. Note that the indentation must be an actual tab character, NOT spaces.
+
 
 The final command ```echo $?``` returns the error code of the last executed command; 0 = success, anything else usually means something went wrong.
 

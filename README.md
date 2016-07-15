@@ -11,16 +11,17 @@ following steps:
 form](http://goo.gl/GB61cF).  This is due on Friday, 15 July -- **you
 will not be able to submit any assignments if this is not done**.
 
-3. On your local machine, create a repository that you will be using
-for your COMS2001 assignments -- the name of the repository doesn't
-matter. Create a file `README.md` in a subdirectory called `hw0` of
-that repository and commit it.
+3. Before you can fetch/pull repositories from or push repositories to
+GitHub from a local machine on Wits campus, you will have to set up
+`git` to by-pass the university proxy server.  To do that, execute the
+following commands, replacing 'student_number' and 'password' with your details:  
 
-4. Once notified that your private repository for this course has been
-created, link your local repository to your private GitHub repository
-for this course and push to GitHub.
+```
+git config --global https.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"  
+git config --global http.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"
+```
 
-5. You are now ready to work on your first assignment.
+4. You are now ready to work on your first assignment, access hw0 in this repository.
 
 ## `git` and GitHub
 
@@ -52,16 +53,6 @@ Once you have an account, register it with this course by filling out
 account, you will receive an email message with a link to your
 personal GitHub repository for this course; this email will be sent to
 the email address associated with your GitHub account.
-
-## Configuring `git` to by-pass Wits proxy server
-
-Before you can fetch/pull repositories from or push repositories to
-GitHub from a local machine on Wits campus, you will have to set up
-`git` to by-pass the university proxy server.  To do that, execute the
-following command:
-
-git config --global https.proxy
-"http://students\student_number:password@proxyss.wits.ac.za:80"
 
 ## Submitting assignments in COMS2001
 
