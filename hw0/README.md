@@ -35,8 +35,6 @@ cd hw/hw0
 ls
 ```
 
-You are recommended to create a hw repository on your own account for working, and use the one we assign you for your final submission.
-
 Say you've just finished coding wc.c in the first part of your assignment and want to save your changes.  
 ```git status``` - see what files are changed and staged for the next commit, those are displayed in red and green respectively  
 ```git diff``` - see what changes have been made since your last commit  
@@ -55,13 +53,11 @@ For this homework, you will be brushing up on your C skills and exploring how a 
 Part of this course is that you are able solve problems independently. We have linked some resources and you are encouraged to read the material and search the internet for any specific problems you encounter; Googling is a skill. Nevertheless, your tutors are available should you get stuck.
 
 ### 3.1 wc
-We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth.  
-Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like, and try to mimic its basic functionality in wc.c for processing user input and files. It must be able to handle multiple input files. Don’t worry about the flags or spacing in the output. 
-You should also familiarise yourself with the *man* command, which allows you to access manual pages for Linux terminal functions. e.g. ```man wc```  
-While you are working on this, take the time to get some experience with gdb. Use it to step through your code and examine variables. If you have never used gdb before, consult the following tutorial: http://dirac.org/linux/gdb/
+We are going to use wc.c to get you thinking in C, with an eye to how applications utilize the operating system by passing command line arguments from the shell, reading and writing files, and standard file descriptors. You might be familiar with these concepts from your earlier courses, but this course will cover them in much more depth. Your first task is to write a clone of the Unix tool wc, which counts the number of words inside a particular text file. You can run Unix’s wc to see what your output should look like. e.g. ```wc map.c```, and read about it using the *man* command. It allows you to access manual pages for certain functions to see what exactly they do. e.g. ```man wc```.  
+
+*Your task it to code its basic functionality in wc.c for processing user input and files*. It must be able to handle multiple input files. Don’t worry about the flags it takes or spacing in the output.
 
 Since this is your first assignment, we'll help introduce you to some parts of C that you may not have experienced hitherto.
-
 You will notice that main takes in two parameters: *argc* and *argv*.  
 * *argv*: the array of parameters passed to the program. For example you may call *wc* as follows: ```wc file1.txt file2.txt```. *argv* is then ["wc","file1.txt","file2.txt"].  
 * *argc*: the number of parameters passed to the program and will always be at least 1, since the program name is always the first parameter.
@@ -72,12 +68,12 @@ int val2 = 2001;
 char word[] = "student";
 printf("I am a %s doing COMS%d\n",word,val2);
 ```  
-The formatting options presented above are string (%s) and signed integer (%d). We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html that you should consult for techniques such as file handling.
+The formatting options presented above are string (%s) and signed integer (%d). Also notice that there are no built-in string objects in C, you use char arrays. We have listed seveal good tutorial and reference sites for C at http://www.cs.wits.ac.za/~dmitry/coms2001/resources.html that you should consult for techniques such as file handling.
 
 ### 3.2 Executables and addresses
-Now that you have dusted off your C skills and got familiarity with some of the tools, we want you to understand what is really inside of a running program and what the operating system needs to deal with. Load up your wc executable in gdb with a single input file command line argument, set a breakpoint at wc, and run to there. Take a look at the stack using where or backtrace (bt). While you are looking through gdb, think about the following questions and put your answers in the file gdb.txt. • What is the value of infile? (hint: print infile)
+Now that you have dusted off your C skills and got familiarity with some of the tools, we want you to understand what is really inside of a running program and what the operating system needs to deal with. If you have never used gdb before, consult <a href="http://dirac.org/linux/gdb/">this tutorial</a>. Load up your wc executable in gdb with a single input file command line argument, set a breakpoint at wc, and run to there. Take a look at the stack using where or backtrace (bt). While you are looking through gdb, think about the following questions and put your answers in the file gdb.txt.  
+* What is the value of infile? (hint: print infile)
 * What is the object referenced by infile? (hint: *infile)
-* What is the value of ofile? How is it different from that of infile? Why?
 * What is the address of the function wc?
 * Try info stack. Explain what you see.
 * Try info frame. Explain what you see.
@@ -145,7 +141,7 @@ all: hello_world
 
 hello_world: hello_world.c
 	gcc hello_world.c -o hello_world
-```  
+``` 
 After reading the link, you need to do something similar for all three programs in the assignment. Note that the indentation must be an actual tab character, NOT spaces.
 
 

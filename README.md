@@ -15,7 +15,6 @@ will not be able to submit any assignments if this is not done**.
 GitHub from a local machine on Wits campus, you will have to set up
 `git` to by-pass the university proxy server.  To do that, execute the
 following commands, replacing 'student_number' and 'password' with your details:  
-
 ```
 git config --global https.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"  
 git config --global http.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"
@@ -72,7 +71,7 @@ web-site and Wit-e for announcements related to homework assignments.
 number.  This repository is private to you -- only you and the course
 staff can read from this repository: you should keep the contents of
 this repository private and secure.  You will be using this repository
-to submit your assignments.
+to submit your assignments. We will create this for you once you have submitted your details to us through [this form](http://goo.gl/GB61cF).
 
 Each assignment will reside in a separate top-level directory. Each
 assignment has a `README.md` containing instructions as well as the
@@ -101,7 +100,6 @@ to set up a branch in your local repository that tracks
 Working out the details of how the tasks described in the preceding
 paragraph are done is left to you as part your first assignment. Your
 are welcome to seek help on this both from your fellow students and
-from the course staff. A brief presentation on using `git` and GitHub
-will be given at the first lab.
+from the course staff.
 
 ## Good luck with all your assignments! ##
