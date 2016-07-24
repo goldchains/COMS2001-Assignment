@@ -27,7 +27,7 @@ $ ./shell
 ```
 In order to terminate the shell after it starts, either type 'quit' or press CTRL-D.
 
-Use the private repository we assigned you to store your progress, you should know how to commit and push from the previous homework. DO NOT use a public repository for this assignment! 
+Use the private GitHub repository we assigned you, you should know how to commit and push from the previous homework. DO NOT use a public repository for this assignment! 
 
 ## 2 Built-In Functions
 
@@ -46,7 +46,7 @@ Programs have a working directory when they are executed. You have experienced t
 ### 2.2 cd
 
 The *cd* command is another typical built-in command. It changes the current working directory of the shell.
-E.g. ```cd /bin``` changes the directory to '/bin'.
+E.g. ```cd /bin``` changes the working directory to '/bin'.
 
 * Implement the *cd* command, which takes in one argument, a directory name, and changes the current working directory to the specified directory.
 
@@ -96,7 +96,7 @@ In anticipation of future sections where you need to manage multiple processes, 
 You probably found that it was a pain to test your shell in the previous part, because you had to type the
 full pathname of every program. Luckily, every program has access to a set of environment variables,
 which is structured as a hashtable of string keys to string values. One of these environment variables is
-the PATH variable. You can print the PATH variable of your current environment in Bash (not your homemade shell!):
+the PATH variable. You can print the PATH variable of your current environment in Bash:
 ```
 $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:...
@@ -106,8 +106,7 @@ the PATH environment variable and runs the first one that it finds. The director
 
 Modify your shell so that it uses the PATH variable from the environment to resolve program names.
 Typing in the full pathname of the executable should still be supported. Do not use the *execvp*, *execvpe*, or *execlp* functions! 
-We will search for these in your code, and you won't receive a mark for this section if they are found. Use
-*execv* instead and implement your own PATH resolution.
+We will search for these in your code, and you won't receive a mark for this section if they are found. You need to implement your own PATH resolution.
 
 * Implement path resolution for running executables.
 
