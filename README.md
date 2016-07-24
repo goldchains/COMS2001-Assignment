@@ -14,14 +14,12 @@ will not be able to submit any assignments if this is not done** (Deadline passe
 3. Before you can fetch/pull repositories from or push repositories to
 GitHub from a local machine on Wits campus, you will have to set up
 `git` to by-pass the university proxy server.  To do that, execute the
-following commands, replacing 'student_number' and 'password' with your details:
+following commands, replacing 'student_number' and 'password' with your details:  
 ```
 git config --global https.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"  
 git config --global http.proxy "http://students\student_number:password@proxyss.wits.ac.za:80"
 ```
-NOTE: If you still get 407 errors, check whether you have special characters (@,:,!,#,$) in your password and substitue them accordingly. Simply escaping them with '\' does not work, see <a href="http://www.cyberciti.biz/faq/unix-linux-export-variable-http_proxy-with-special-characters/">this link</a> for more details.
-
-4. You are now ready to work on your first assignment, access hw0 in this repository.
+NOTE: If you still get 407 errors, check whether you have special characters (@,:,!,#,$) in your password and substitute them accordingly. Simply escaping them with '\' does not work, see <a href="http://www.cyberciti.biz/faq/unix-linux-export-variable-http_proxy-with-special-characters/">this link</a> for more details.
 
 ## `git` and GitHub
 
@@ -49,7 +47,7 @@ If you don't yet have a GitHub account, create one by following the
 instructions [here](https://help.github.com/articles/set-up-git/).
 
 Once you have an account, register it with this course by filling out
-[this form](http://goo.gl/GB61cF).  After you've registered your
+~~this form~~ (Deadline passed).  After you've registered your
 account, you will receive an email message with a link to your
 personal GitHub repository for this course; this email will be sent to
 the email address associated with your GitHub account.
@@ -72,7 +70,7 @@ web-site and Wit-e for announcements related to homework assignments.
 number.  This repository is private to you -- only you and the course
 staff can read from this repository: you should keep the contents of
 this repository private and secure.  You will be using this repository
-to submit your assignments. We will create this for you once you have submitted your details to us through [this form](http://goo.gl/GB61cF).
+to submit your assignments. We will create this for you once you have submitted your details to us through ~~this form~~ (Deadline passed).
 
 Each assignment will reside in a separate top-level directory. Each
 assignment has a `README.md` containing instructions as well as the

@@ -1,5 +1,5 @@
 
-# HW 0: Executable #
+# Homework 0: Executable #
 
 ## 1 Tools Overview
 
@@ -40,7 +40,7 @@ Say you've just finished coding wc.c in the first part of your assignment below 
 ```git diff``` - see what changes have been made since your last commit  
 ```git add wc.c``` - stage wc.c to your next commit  
 ```git add .``` - stage all changed files in the current directory for your next commit  
- ```git commit -m "Finished coding wc.c"``` - creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
+```git commit -m "Finished coding wc.c"``` - creates a commit with the message "Finished coding wc.c", saving a snapshot of those files
  
 But the files are still saved only on the local computer, to update the remote repository, you need to *push*:  
 ```git push <your_repository_url> master```  
