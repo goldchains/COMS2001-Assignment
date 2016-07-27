@@ -27,7 +27,7 @@ $ ./shell
 ```
 In order to terminate the shell after it starts, either type 'quit' or press CTRL-D.
 
-Use the private GitHub repository we assigned you, you should know how to commit and push from the previous homework. DO NOT use a public repository for this assignment! 
+Use the private GitHub repository we assigned you, you should know how to commit and push from the previous homework. DO NOT use a public repository! 
 
 ## 2 Built-In Functions
 
@@ -41,26 +41,33 @@ The skeleton code we have provided for you in 'shell.c' has a dispatcher for bui
 Programs have a working directory when they are executed. You have experienced this whenever you try to open a file in a program, it usually searches for the filename relative to the directory where you executed the program.  
 *pwd*, or 'print-working-directory', prints the current working directory to standard output. 
 
-* Implement *pwd* as a built-in command for your shell. (Hint: Use Google; there's a C function for the working directory)
+* Implement *pwd* as a built-in command. (Hint: Use Google; there's a C function to get the working directory)
+* Update your shell's read loop to print the current working directory along with the line number.
+
+For example, say that your current directory is "/home/John/Desktop":
+```
+$ ./shell
+0 /home/John/Desktop: pwd
+/home/John/Desktop
+1 /home/John/Desktop: quit
+```
 
 ### 2.2 cd
 
-The *cd* command is another typical built-in command. It changes the current working directory of the shell.
+The *cd* command, "change directory", is another typical built-in command. It changes the current working directory of the shell.
 E.g. ```cd /bin``` changes the working directory to '/bin'.
 
 * Implement the *cd* command, which takes in one argument, a directory name, and changes the current working directory to the specified directory.
 
 You should notice how *cd* in Bash handles the special characters tilde '\~', and dash '-'.  
 '\~': Expands to the home directory of the current user. For example, say your username is 'John', then ```cd ~``` is the same as ```cd /home/John```, and ```cd ~/Desktop``` is the same as ```cd /home/John/Desktop```.  
-'-': References the previous working directory. For example in Bash:
+'-': Return to the previous working directory. For example:
 ```
-$ cd /home/John
-$ cd /bin
-$ pwd
-/bin
-$ cd -
-$ pwd
-/home/John
+$ ./shell
+0 /home/John/Desktop: cd /home/John
+1 /home/John: cd /bin
+2 /bin: cd -
+3 /home/John: quit
 ```
 
 * Update your *cd* command to handle '\~'.
@@ -80,9 +87,9 @@ For this step, you can assume that the first word of the command will be the ful
 You should use the functions defined in tokenizer.c for separating the input text into words. You do not need to support any parsing features that are not supported by tokenizer.c. Once you implement this step, you should be able to execute programs, like this:
 ```
 $ ./shell
-0: /usr/bin/wc shell.c
+0 /home/John/Dekstop/hw/hw1: /usr/bin/wc shell.c
 77 262 1843 shell.c
-1: quit
+1 /home/John/Dekstop/hw/hw1: quit
 ```
 We'll give you a hint to start off: when your shell needs to execute a program, it should fork a child process, which calls one of the
 exec functions such as *execv* (Google them) to run the new program. The parent process should wait until the child process completes and then listen for more commands.
@@ -113,9 +120,9 @@ We will search for these in your code, and you won't receive a mark for this sec
 You should now be able to run any executable in the folders in PATH without specifying the full pathname. For example:
 ```
 $ ./shell
-0: wc shell.c
+0 /home/John/Dekstop/hw/hw1: wc shell.c
 77 262 1843 shell.c
-1: quit
+1 /home/John/Dekstop/hw/hw1: quit
 ```
 
 ## 5 Input/Output Redirection
@@ -129,10 +136,10 @@ Similarly, the syntax "[process] < [file]" tells your shell to feed the contents
 For example:
 ```
 $ ./shell
-0: wc shell.c > out.txt
-1: cat out.txt
+0 /home/John/Dekstop/hw/hw1: wc shell.c > out.txt
+1 /home/John/Dekstop/hw/hw1: cat out.txt
 77 262 1843 shell.c
-2: quit
+2 /home/John/Dekstop/hw/hw1: quit
 ```
 
 You do **not** need to support redirection for shell built-in commands. You do **not** need to support stderr redirection, nor appending to files with "[process] >> [file]". 
@@ -171,9 +178,9 @@ is in the foreground of a terminal with "tcsetpgrp(int fd, pid_t pgrp)". The fd 
 Signals are asynchronous messages that are delivered to processes. They are identified by their signal
 number, but they also have human-friendly names that all start with SIG. Some common ones include:  
 * **SIGINT** - Delivered when you type CTRL-C. By default, this stops the program.
-* **SIGQUIT** - Delivered when you type CTRL-\\. By default, this also stops the program, but programs treat this signal more seriously than SIGINT. This signal also attempts to produce a core dump of the program before exiting.
 * **SIGKILL** - There is no keyboard shortcut for this. This signal stops the program forcibly and cannot be overridden by the program. (Most other signals can be ignored by the program.)
 * **SIGTERM** - There is no keyboard shortcut for this either. It behaves the same way as SIGQUIT.
+* **SIGQUIT** - Delivered when you type CTRL-\\. By default, this also stops the program, but programs treat this signal more seriously than SIGINT. This signal also attempts to produce a core dump of the program before exiting.
 * **SIGTSTP** - Delivered when you type CTRL-Z. By default, this pauses the program. In bash, if you type CTRL-Z, the current program will be paused and bash (which can detect that you paused the current program) will start accepting more commands.
 * **SIGCONT** - Delivered when you run 'fg' or 'fg %NUMBER' in Bash. This signal resumes a paused program.
 * **SIGTTIN** - Delivered to background processes that are trying to read input from the keyboard. By default, this pauses the program, since background processes cannot read input from the keyboard. When you resume the background process with SIGCONT and put it in the foreground, it can try to read input from the keyboard again.
@@ -194,9 +201,9 @@ its process group should be placed in the foreground.
 The SIGINT command should no longer terminate your shell when a subprocess is running. For example:
 ```
 $ ./shell
-0: sleep 10
+0 /home/John/Dekstop: sleep 10
 CTRL-C
-1: quit
+1 /home/John/Dekstop: quit
 ```
 
 ## 7 Background Processing
@@ -232,7 +239,7 @@ stores the terminal settings of each program.
 
 ## 8 Submission
 
-This assignment is due **26 August 2016, 11:59pm**. Please ensure your final or latest working code is in your private repository by then! 
+This assignment is due **26 August 2016, 11:59 PM**. Please ensure your final or latest working code is in your private repository by then! 
 
 To submit, as usual, commit your changes and push to your private repository:
 ```
