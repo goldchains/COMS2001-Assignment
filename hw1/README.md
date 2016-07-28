@@ -1,6 +1,6 @@
 # Homework 1: Shell #
 
-**Due Date: 26 August 2016, 11:59 PM**
+**Due: 26 August 2016, 11:59 PM**
 
 ## Introduction
 
@@ -42,7 +42,7 @@ Programs have a working directory when they are executed. You have experienced t
 *pwd*, or 'print-working-directory', prints the current working directory to standard output. 
 
 * Implement *pwd* as a built-in command. (Hint: Use Google; there's a C function to get the working directory)
-* Update your shell's read loop to print the current working directory along with the line number.
+* Update your shell's read loop to print the current working directory along with the line number. The line number should increment after each command.
 
 For example, say that your current directory is "/home/John/Desktop":
 ```
@@ -239,7 +239,7 @@ stores the terminal settings of each program.
 
 ## 8 Submission
 
-This assignment is due **26 August 2016, 11:59 PM**. Please ensure your final or latest working code is in your private repository by then! 
+This assignment is due **26 August 2016, 11:59 PM**. Please ensure your final code is in your private repository by then! 
 
 To submit, as usual, commit your changes and push to your private repository:
 ```
@@ -249,7 +249,7 @@ git push https://github.com/WITS-COMS2001/<student_number> master
 
 If your code doesn't compile or run, you will get 0. If you haven't quite finished the last sections, it's better to submit code where the first parts are in working order than half-complete code where nothing works.
 
-Please ensure that your shell doesn't have any extraneous output for debugging. That is, any time a built-in or a process in run with your shell, only the output of the built-in or process
+Please ensure that your shell doesn't have any extraneous output for debugging. That is, any time a built-in or a process is run with your shell, only the output of the built-in or process
 should be printed. Please do not print anything extra, as this can disrupt our marking and may influence your score.
 
-Lastly, ensure you have separate folders for each homework. All your source code for this assignment should be in a 'hw1' folder in the root of your repository. Do not upload any executables.
+Lastly, ensure you have separate folders for each homework. All your source code for this assignment should be in a 'hw1' folder in the root of your repository.
