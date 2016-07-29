@@ -1,0 +1,3 @@
+number of words: 4 
+The address of infile is 0x7ffd130c6d48
+The address of *infile is 0x12d9010
