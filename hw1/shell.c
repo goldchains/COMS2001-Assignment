@@ -24,6 +24,16 @@ int cmd_quit(tok_t arg[]) {
 
 int cmd_help(tok_t arg[]);
 
+int cmd_pwd(tok_t arg[]){
+   char pwd[1024];
+   if (getcwd(pwd, sizeof(pwd)) != NULL)
+       fprintf(stdout, "Current working dir: %s\n", pwd);
+   else
+       perror("getcwd() error");
+   return 0; 
+  
+};
+
 /* Command Lookup Table Structures */
 typedef int cmd_fun_t (tok_t args[]); // cmd functions take token array and return int
 typedef struct fun_desc {
@@ -34,6 +44,7 @@ typedef struct fun_desc {
 // add more commands to this lookup table!
 fun_desc_t cmd_table[] = {
   {cmd_help, "?", "show this help menu"},
+  {cmd_pwd, "pwd", "show working directory"},
   {cmd_quit, "quit", "quit the command shell"},
 };
 
@@ -123,10 +134,13 @@ int shell (int argc, char *argv[]) {
   lineNum=0;
   // change this to print the current working directory before each line as well as the line number.
   fprintf(stdout, "%d: ", lineNum);
-  while ((s = freadln(stdin))){
+  while ((s = freadln(stdin))){ 
     t = getToks(s); // break the line into tokens
     fundex = lookup(t[0]); // Is first token a shell literal
-    if(fundex >= 0) cmd_table[fundex].fun(&t[1]);
+    if(fundex >= 0){
+cmd_table[fundex].fun(&t[1]);
+   lineNum++;
+}   
     else {
        // replace this statement to call a function that runs executables
       fprintf(stdout, "This shell only supports built-ins. Replace this to run programs as commands.\n");
